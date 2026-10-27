@@ -50,6 +50,7 @@
     <nav class="nav-links" id="navLinks" aria-label="Main">
       <a href="#about">About</a>
       <a href="#platforms">Platforms</a>
+      <a href="#videos" data-videos-link hidden>Videos</a>
       <a href="#content">Content</a>
       <a href="#contact" class="nav-cta">Work with me</a>
     </nav>
@@ -100,7 +101,8 @@
         <div class="core">
           <div class="core-ring"></div>
           <div class="core-inner">
-            <span>PL</span>
+            <img class="core-photo" data-profile-photo alt="" hidden />
+            <span class="core-initials">PL</span>
           </div>
         </div>
         <div class="eq">
@@ -122,11 +124,14 @@
     <!-- ABOUT -->
     <section class="section about" id="about">
       <div class="section-head reveal">
-        <p class="eyebrow">01 — About</p>
+        <p class="eyebrow">About</p>
         <h2>Creating content that <span class="gradient-text">connects</span></h2>
       </div>
       <div class="about-grid">
         <div class="about-card glass reveal">
+          <figure class="about-photo" hidden>
+            <img data-profile-photo alt="Pang Lihour" />
+          </figure>
           <p>
             I'm <strong>Pang Lihour</strong>, a content creator sharing short videos, stories and
             creative moments with a growing community online. My goal is simple — make content
@@ -150,7 +155,7 @@
     <!-- PLATFORMS -->
     <section class="section" id="platforms">
       <div class="section-head reveal">
-        <p class="eyebrow">02 — Platforms</p>
+        <p class="eyebrow">Platforms</p>
         <h2>Follow me <span class="gradient-text">everywhere</span></h2>
       </div>
       <div class="platforms">
@@ -192,10 +197,19 @@
       </div>
     </section>
 
+    <!-- FEATURED VIDEOS (filled from js/config.js; hidden when the list is empty) -->
+    <section class="section" id="videos" hidden>
+      <div class="section-head reveal">
+        <p class="eyebrow">Featured videos</p>
+        <h2>Watch my <span class="gradient-text">latest videos</span></h2>
+      </div>
+      <div class="videos" id="videoGrid"></div>
+    </section>
+
     <!-- CONTENT -->
     <section class="section" id="content">
       <div class="section-head reveal">
-        <p class="eyebrow">03 — What I create</p>
+        <p class="eyebrow">What I create</p>
         <h2>Content &amp; <span class="gradient-text">collaborations</span></h2>
       </div>
       <div class="services">
@@ -225,7 +239,7 @@
     <!-- CONTACT -->
     <section class="section contact" id="contact">
       <div class="contact-card glass reveal">
-        <p class="eyebrow">04 — Contact</p>
+        <p class="eyebrow">Contact</p>
         <h2>Let's create something <span class="gradient-text">together</span></h2>
         <p class="contact-sub">For business inquiries, sponsorships and collaborations, reach me at:</p>
         <div class="email-row">
@@ -260,6 +274,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <script src="js/config.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

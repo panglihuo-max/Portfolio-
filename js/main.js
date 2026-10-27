@@ -9,6 +9,194 @@
 
   document.getElementById("year").textContent = new Date().getFullYear();
 
+  var config = window.SITE_CONFIG || {};
+
+  /* ---------- Profile photo (falls back to "PL" initials) ---------- */
+  if (config.profileImage) {
+    var probe = new Image();
+    probe.onload = function () {
+      document.querySelectorAll("[data-profile-photo]").forEach(function (img) {
+        img.src = config.profileImage;
+        img.hidden = false;
+        var figure = img.closest("figure");
+        if (figure) figure.hidden = false;
+      });
+      document.documentElement.classList.add("has-photo");
+    };
+    probe.src = config.profileImage;
+  }
+
+  /* ---------- Featured videos from social media ---------- */
+  var PLATFORMS = {
+    tiktok: { name: "TikTok", icon: "i-tiktok", brand: "#25f4ee" },
+    youtube: { name: "YouTube", icon: "i-youtube", brand: "#ff3b3b" },
+    facebook: { name: "Facebook", icon: "i-facebook", brand: "#3b82f6" },
+    instagram: { name: "Instagram", icon: "i-instagram", brand: "#e1306c" },
+    file: { name: "Video", icon: "i-video", brand: "#60a5fa" }
+  };
+
+  // Turns a pasted link into { platform, embed, vertical } or null if unsupported.
+  function parseVideo(link, autoplay) {
+    var url;
+    try { url = new URL(link, window.location.href); } catch (e) { return null; }
+    var host = url.hostname.replace(/^(www|m|vm|web)\./, "");
+    var path = url.pathname;
+    var m;
+
+    if (/\.(mp4|webm|ogg|mov)$/i.test(path)) {
+      return { platform: "file", src: url.href, vertical: false };
+    }
+
+    if (host === "tiktok.com" && (m = path.match(/\/video\/(\d+)/))) {
+      return {
+        platform: "tiktok",
+        vertical: true,
+        embed: "https://www.tiktok.com/player/v1/" + m[1] +
+          "?autoplay=" + (autoplay ? 1 : 0) + "&muted=1&loop=1&rel=0&description=0&music_info=0"
+      };
+    }
+
+    if (host === "youtube.com" || host === "youtu.be" || host === "youtube-nocookie.com") {
+      var ytParams = "autoplay=" + (autoplay ? 1 : 0) + "&mute=1&playsinline=1&rel=0&modestbranding=1";
+      var list = url.searchParams.get("list");
+      var id = null;
+      if (host === "youtu.be") id = path.slice(1).split("/")[0];
+      else if ((m = path.match(/^\/(shorts|embed|live)\/([\w-]{6,})/))) id = m[2];
+      else id = url.searchParams.get("v");
+      if (id) {
+        return {
+          platform: "youtube",
+          vertical: /^\/shorts\//.test(path),
+          embed: "https://www.youtube-nocookie.com/embed/" + id + "?" + ytParams + "&loop=1&playlist=" + id
+        };
+      }
+      if (list) {
+        return {
+          platform: "youtube",
+          vertical: false,
+          embed: "https://www.youtube-nocookie.com/embed/videoseries?list=" + encodeURIComponent(list) + "&" + ytParams + "&loop=1"
+        };
+      }
+      return null;
+    }
+
+    if (host === "facebook.com" || host === "fb.watch") {
+      return {
+        platform: "facebook",
+        vertical: /\/reels?\//.test(path),
+        embed: "https://www.facebook.com/plugins/video.php?href=" + encodeURIComponent(url.href) +
+          "&show_text=false&autoplay=" + (autoplay ? "true" : "false") + "&mute=1"
+      };
+    }
+
+    if (host === "instagram.com" && (m = path.match(/^\/(p|reel|reels|tv)\/([\w-]+)/))) {
+      return {
+        platform: "instagram",
+        vertical: true,
+        embed: "https://www.instagram.com/" + (m[1] === "p" ? "p" : "reel") + "/" + m[2] + "/embed"
+      };
+    }
+
+    return null;
+  }
+
+  function buildVideoCard(video, link, index) {
+    var info = PLATFORMS[video.platform];
+    var card = document.createElement("article");
+    card.className = "vcard glass reveal" + (video.vertical ? "" : " wide");
+    card.style.setProperty("--brand", info.brand);
+
+    var frame = document.createElement("div");
+    frame.className = "vframe" + (video.vertical ? " vertical" : "");
+    var title = "Pang Lihour on " + info.name + " — video " + (index + 1);
+
+    if (video.platform === "file") {
+      var vid = document.createElement("video");
+      vid.src = video.src;
+      vid.muted = true;
+      vid.loop = true;
+      vid.playsInline = true;
+      vid.controls = true;
+      vid.preload = "metadata";
+      vid.setAttribute("aria-label", title);
+      vid.addEventListener("loadedmetadata", function () {
+        if (vid.videoHeight > vid.videoWidth) {
+          frame.classList.add("vertical");
+          card.classList.remove("wide");
+        }
+      });
+      frame.appendChild(vid);
+    } else {
+      var iframe = document.createElement("iframe");
+      iframe.title = title;
+      iframe.dataset.src = video.embed;
+      iframe.setAttribute("allow", "autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write");
+      iframe.setAttribute("scrolling", "no");
+      iframe.setAttribute("loading", "lazy");
+      frame.appendChild(iframe);
+    }
+
+    var meta = document.createElement("a");
+    meta.className = "vmeta";
+    meta.href = video.platform === "file" ? video.src : link;
+    meta.target = "_blank";
+    meta.rel = "noopener";
+    meta.innerHTML =
+      '<span class="vbadge"><svg><use href="#' + info.icon + '" /></svg></span>' +
+      "<span>" + (video.platform === "file" ? "Open video" : "Watch on " + info.name) + "</span>" +
+      '<svg class="ico"><use href="#i-arrow" /></svg>';
+
+    card.appendChild(frame);
+    card.appendChild(meta);
+    return card;
+  }
+
+  var videoLinks = (config.videos || []).filter(function (v) { return typeof v === "string" && v.trim(); });
+  var autoplayVideos = config.autoplay !== false && !reduceMotion;
+  var videoGrid = document.getElementById("videoGrid");
+  var videoCount = 0;
+
+  videoLinks.forEach(function (link) {
+    var video = parseVideo(link.trim(), autoplayVideos);
+    if (!video) {
+      if (window.console) console.warn("Unsupported video link in js/config.js:", link);
+      return;
+    }
+    videoGrid.appendChild(buildVideoCard(video, link.trim(), videoCount++));
+  });
+
+  if (videoCount) {
+    document.getElementById("videos").hidden = false;
+    document.querySelector("[data-videos-link]").hidden = false;
+
+    // Embeds load (and start playing) only when they scroll into view;
+    // own video files pause again when they leave the screen.
+    var startVideo = function (frame) {
+      var iframe = frame.querySelector("iframe[data-src]");
+      if (iframe) {
+        iframe.src = iframe.dataset.src;
+        iframe.removeAttribute("data-src");
+      }
+    };
+    var frames = videoGrid.querySelectorAll(".vframe");
+    if ("IntersectionObserver" in window) {
+      var videoObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          var vid = entry.target.querySelector("video");
+          if (entry.isIntersecting) {
+            startVideo(entry.target);
+            if (vid && autoplayVideos) vid.play().catch(function () {});
+          } else if (vid) {
+            vid.pause();
+          }
+        });
+      }, { threshold: 0.35 });
+      frames.forEach(function (f) { videoObserver.observe(f); });
+    } else {
+      frames.forEach(startVideo);
+    }
+  }
+
   /* ---------- Nav: scrolled state + mobile menu ---------- */
   var nav = document.getElementById("nav");
   var menuBtn = document.getElementById("menuBtn");
