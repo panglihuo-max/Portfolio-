@@ -1,5 +1,0 @@
-Put your photo in this folder and name it: profile.jpg
-
-A square photo works best (at least 600 x 600 pixels).
-Keep this "assets" folder next to index.html.
-You can also put your own .mp4 videos here (see SITE SETTINGS inside index.html).

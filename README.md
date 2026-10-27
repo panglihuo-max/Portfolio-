@@ -9,8 +9,10 @@ floating glow blobs, orbiting platform icons, typing headline, scroll reveals,
 | Platform | Link |
 | --- | --- |
 | TikTok | https://www.tiktok.com/@lihour_001 |
+| TikTok (2nd) | https://www.tiktok.com/@lihour_002 |
 | YouTube | https://youtube.com/@panglihour |
 | Instagram | https://www.instagram.com/lihour_001 |
+| Facebook Page (main) | https://www.facebook.com/profile.php?id=100091285929977 |
 | Facebook | https://www.facebook.com/share/1ErUE1aBmX/?mibextid=wwXIfr |
 | Telegram | https://t.me/lihuo_pang |
 | Business email | panglihuo@gmail.com |
@@ -20,10 +22,11 @@ floating glow blobs, orbiting platform icons, typing headline, scroll reveals,
 Open **`index.html`** in a text editor (Notepad, TextEdit, VS Code) and search for
 **`SITE SETTINGS`** — that block near the end of the file holds both options.
 
-**Your photo:** save it as `assets/profile.jpg` (square, at least 600×600 px).
-It appears in the glowing circle at the top and in the About section. Until it's
-there, the site shows your "PL" initials. To use a different file name, change
-`profileImage` in SITE SETTINGS.
+**Your photos:** your profile photo (top of the page and About section) and the
+four Gallery photos are built into `index.html`, so they always show — even when
+the file is opened on its own. To swap the profile photo later, put a new photo
+in `assets/` and write its name in `profileImage` in SITE SETTINGS, e.g.
+`"assets/new-photo.jpg"`.
 
 **Autoplay videos:** paste video links into the `videos` list, for example:
 
@@ -48,12 +51,12 @@ section stays hidden. Set `autoplay: false` to turn autoplay off.
 
 ```
 index.html   the whole website in one file (styles, animations and settings included)
-assets/      put profile.jpg and any .mp4 videos here, next to index.html
+assets/      optional: a replacement profile photo or your own .mp4 videos
 downloads/pang-lihour-portfolio.zip  everything above, ready to download
 ```
 
 ## Use it
 
 Open `index.html` in a browser — no build step. It works even on its own; the
-`assets` folder is only needed for your photo and video files. To publish, upload the folder to any
+`assets` folder is only needed if you add your own video files or a new photo. To publish, upload the folder to any
 static host (GitHub Pages, Netlify, Vercel, Cloudflare Pages).
