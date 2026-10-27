@@ -14,7 +14,7 @@ floating glow blobs, orbiting platform icons, typing headline, scroll reveals,
 | Instagram | https://www.instagram.com/lihour_001 |
 | Facebook Page (main) | https://www.facebook.com/profile.php?id=100091285929977 |
 | Facebook | https://www.facebook.com/share/1ErUE1aBmX/?mibextid=wwXIfr |
-| Telegram | https://t.me/lihuo_pang |
+| Telegram (contact buttons) | https://t.me/lihuo_pang |
 | Business email | panglihuo@gmail.com |
 
 ## Add your photo and videos
@@ -55,8 +55,40 @@ assets/      optional: a replacement profile photo or your own .mp4 videos
 downloads/pang-lihour-portfolio.zip  everything above, ready to download
 ```
 
+## Go live (one-time, 1 minute)
+
+1. Open https://github.com/panglihuo-max/Portfolio-/settings/pages
+2. Under **Build and deployment → Source**, choose **Deploy from a branch**.
+3. Pick the branch **claude/pang-lihour-portfolio-io9wgb**, folder **/ (root)**, then **Save**.
+4. After about a minute the site is live at **https://panglihuo-max.github.io/Portfolio-/**
+
+Every change pushed to that branch updates the live site automatically.
+
+## Links
+
+| For | Link |
+| --- | --- |
+| Visitors (share this) | https://panglihuo-max.github.io/Portfolio-/ |
+| Owner: visitor statistics | https://analytics.google.com |
+| Owner: edit the site | https://github.com/panglihuo-max/Portfolio-/edit/claude/pang-lihour-portfolio-io9wgb/index.html |
+| Owner: hosting settings | https://github.com/panglihuo-max/Portfolio-/settings/pages |
+| Owner: change history | https://github.com/panglihuo-max/Portfolio-/commits/claude/pang-lihour-portfolio-io9wgb |
+
+## Visitor analytics (Google Analytics 4)
+
+1. Sign in at https://analytics.google.com with your Google account and create a
+   property for the website (Admin → Create → Property, then add a **Web** data
+   stream with the URL `https://panglihuo-max.github.io/Portfolio-/`).
+2. Copy the **Measurement ID** (looks like `G-AB12CD34EF`).
+3. Paste it into `googleAnalyticsId` in SITE SETTINGS inside `index.html`.
+
+You then see visitors, countries, devices and traffic sources in real time. The
+site also reports which buttons people click: `social_click` (platform,
+placement), `contact_click` (email, copy email, Telegram), `gallery_open` and
+`video_view`. To break these down by platform in reports, register `platform`
+and `method` as custom dimensions (Admin → Custom definitions).
+
 ## Use it
 
 Open `index.html` in a browser — no build step. It works even on its own; the
-`assets` folder is only needed if you add your own video files or a new photo. To publish, upload the folder to any
-static host (GitHub Pages, Netlify, Vercel, Cloudflare Pages).
+`assets` folder is only needed if you add your own video files or a new photo.
