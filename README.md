@@ -17,12 +17,13 @@ floating glow blobs, orbiting platform icons, typing headline, scroll reveals,
 
 ## Add your photo and videos
 
-Everything is set in **`js/config.js`** — open it in any text editor.
+Open **`index.html`** in a text editor (Notepad, TextEdit, VS Code) and search for
+**`SITE SETTINGS`** — that block near the end of the file holds both options.
 
 **Your photo:** save it as `assets/profile.jpg` (square, at least 600×600 px).
 It appears in the glowing circle at the top and in the About section. Until it's
 there, the site shows your "PL" initials. To use a different file name, change
-`profileImage` in `js/config.js`.
+`profileImage` in SITE SETTINGS.
 
 **Autoplay videos:** paste video links into the `videos` list, for example:
 
@@ -46,15 +47,13 @@ section stays hidden. Set `autoplay: false` to turn autoplay off.
 ## Files
 
 ```
-index.html          page markup and content
-css/style.css       dark theme, layout and animations
-js/config.js        YOUR SETTINGS: photo and featured videos
-js/main.js          particles, typing effect, reveal, tilt, menu, copy-email, videos
-assets/             site icon — put profile.jpg and any .mp4 videos here
+index.html   the whole website in one file (styles, animations and settings included)
+assets/      put profile.jpg and any .mp4 videos here, next to index.html
 downloads/pang-lihour-portfolio.zip  everything above, ready to download
 ```
 
 ## Use it
 
-Open `index.html` in a browser — no build step. To publish, upload the folder to any
+Open `index.html` in a browser — no build step. It works even on its own; the
+`assets` folder is only needed for your photo and video files. To publish, upload the folder to any
 static host (GitHub Pages, Netlify, Vercel, Cloudflare Pages).
