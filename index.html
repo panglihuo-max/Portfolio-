@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pang Lihour — Content Creator</title>
+  <meta name="description" content="Pang Lihour — content creator on TikTok, YouTube, Instagram, Facebook and Telegram. Business inquiries: panglihuo@gmail.com" />
+  <meta name="theme-color" content="#050b1a" />
+  <meta property="og:title" content="Pang Lihour — Content Creator" />
+  <meta property="og:description" content="Short videos, stories and creative content. Follow along and work with me." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Live animated background -->
+  <div class="bg" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="grid-overlay"></div>
+    <canvas id="particles"></canvas>
+  </div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <!-- SVG icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-tiktok" viewBox="0 0 24 24"><path fill="currentColor" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.6" cy="6.4" r=".6" fill="currentColor"/></g></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></symbol>
+    <symbol id="i-telegram" viewBox="0 0 24 24"><path fill="currentColor" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="m3.5 7 8.5 6 8.5-6"/></g></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></g></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="14" height="14" rx="3"/><path d="m16 10 6-3.5v11L16 14"/></g></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></g></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13.5" r="3.5"/></g></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></symbol>
+  </svg>
+
+  <header class="nav" id="nav">
+    <a href="#home" class="logo" aria-label="Pang Lihour home">
+      <span class="logo-mark">PL</span>
+      <span class="logo-text">Pang Lihour</span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#platforms">Platforms</a>
+      <a href="#content">Content</a>
+      <a href="#contact" class="nav-cta">Work with me</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="badge reveal"><span class="live-dot"></span> Content Creator · Creating daily</p>
+        <h1 class="reveal">
+          Hi, I'm <span class="gradient-text">Pang Lihour</span>
+        </h1>
+        <p class="hero-sub reveal">
+          I create <span class="typed" id="typed" aria-live="polite">short videos</span><span class="caret" aria-hidden="true"></span>
+          <br />for my community on TikTok, YouTube, Instagram, Facebook and Telegram.
+        </p>
+        <div class="hero-actions reveal">
+          <a href="#platforms" class="btn btn-primary">Watch my content
+            <svg class="ico"><use href="#i-arrow" /></svg>
+          </a>
+          <a href="mailto:panglihuo@gmail.com?subject=Business%20inquiry%20for%20Pang%20Lihour" class="btn btn-ghost">
+            <svg class="ico"><use href="#i-mail" /></svg> Business inquiry
+          </a>
+        </div>
+        <ul class="hero-socials reveal" aria-label="Social links">
+          <li><a href="https://www.tiktok.com/@lihour_001" target="_blank" rel="noopener" aria-label="TikTok"><svg><use href="#i-tiktok" /></svg></a></li>
+          <li><a href="https://youtube.com/@panglihour" target="_blank" rel="noopener" aria-label="YouTube"><svg><use href="#i-youtube" /></svg></a></li>
+          <li><a href="https://www.instagram.com/lihour_001" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-instagram" /></svg></a></li>
+          <li><a href="https://www.facebook.com/share/1ErUE1aBmX/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook"><svg><use href="#i-facebook" /></svg></a></li>
+          <li><a href="https://t.me/lihuo_pang" target="_blank" rel="noopener" aria-label="Telegram"><svg><use href="#i-telegram" /></svg></a></li>
+        </ul>
+      </div>
+
+      <div class="hero-visual reveal" aria-hidden="true">
+        <div class="orbit orbit-1">
+          <span class="planet p-tiktok"><svg><use href="#i-tiktok" /></svg></span>
+          <span class="planet p-youtube"><svg><use href="#i-youtube" /></svg></span>
+        </div>
+        <div class="orbit orbit-2">
+          <span class="planet p-instagram"><svg><use href="#i-instagram" /></svg></span>
+          <span class="planet p-facebook"><svg><use href="#i-facebook" /></svg></span>
+          <span class="planet p-telegram"><svg><use href="#i-telegram" /></svg></span>
+        </div>
+        <div class="core">
+          <div class="core-ring"></div>
+          <div class="core-inner">
+            <span>PL</span>
+          </div>
+        </div>
+        <div class="eq">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-hint" aria-label="Scroll to About"><span></span></a>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>TikTok</span><b>✦</b><span>YouTube</span><b>✦</b><span>Instagram</span><b>✦</b><span>Facebook</span><b>✦</b><span>Telegram</span><b>✦</b><span>Brand Collaborations</span><b>✦</b>
+        <span>TikTok</span><b>✦</b><span>YouTube</span><b>✦</b><span>Instagram</span><b>✦</b><span>Facebook</span><b>✦</b><span>Telegram</span><b>✦</b><span>Brand Collaborations</span><b>✦</b>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about">
+      <div class="section-head reveal">
+        <p class="eyebrow">01 — About</p>
+        <h2>Creating content that <span class="gradient-text">connects</span></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-card glass reveal">
+          <p>
+            I'm <strong>Pang Lihour</strong>, a content creator sharing short videos, stories and
+            creative moments with a growing community online. My goal is simple — make content
+            that people enjoy, relate to and want to share.
+          </p>
+          <p>
+            You can find me as <strong>@lihour_001</strong> on TikTok and Instagram, and
+            <strong>@panglihour</strong> on YouTube. I'm open to brand partnerships, sponsored
+            content and creative collaborations.
+          </p>
+        </div>
+        <ul class="handles reveal">
+          <li class="glass"><span class="h-label">TikTok</span><span class="h-val">@lihour_001</span></li>
+          <li class="glass"><span class="h-label">Instagram</span><span class="h-val">@lihour_001</span></li>
+          <li class="glass"><span class="h-label">YouTube</span><span class="h-val">@panglihour</span></li>
+          <li class="glass"><span class="h-label">Telegram</span><span class="h-val">@lihuo_pang</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PLATFORMS -->
+    <section class="section" id="platforms">
+      <div class="section-head reveal">
+        <p class="eyebrow">02 — Platforms</p>
+        <h2>Follow me <span class="gradient-text">everywhere</span></h2>
+      </div>
+      <div class="platforms">
+        <a class="pcard tilt reveal" style="--brand:#25f4ee" href="https://www.tiktok.com/@lihour_001" target="_blank" rel="noopener">
+          <span class="pcard-icon"><svg><use href="#i-tiktok" /></svg></span>
+          <h3>TikTok</h3>
+          <p class="handle">@lihour_001</p>
+          <p>Short, fun videos and trends — my main stage.</p>
+          <span class="pcard-cta">Follow <svg class="ico"><use href="#i-arrow" /></svg></span>
+        </a>
+        <a class="pcard tilt reveal" style="--brand:#ff3b3b" href="https://youtube.com/@panglihour" target="_blank" rel="noopener">
+          <span class="pcard-icon"><svg><use href="#i-youtube" /></svg></span>
+          <h3>YouTube</h3>
+          <p class="handle">@panglihour</p>
+          <p>Longer videos, shorts and behind-the-scenes.</p>
+          <span class="pcard-cta">Subscribe <svg class="ico"><use href="#i-arrow" /></svg></span>
+        </a>
+        <a class="pcard tilt reveal" style="--brand:#e1306c" href="https://www.instagram.com/lihour_001" target="_blank" rel="noopener">
+          <span class="pcard-icon"><svg><use href="#i-instagram" /></svg></span>
+          <h3>Instagram</h3>
+          <p class="handle">@lihour_001</p>
+          <p>Photos, reels and daily stories.</p>
+          <span class="pcard-cta">Follow <svg class="ico"><use href="#i-arrow" /></svg></span>
+        </a>
+        <a class="pcard tilt reveal" style="--brand:#3b82f6" href="https://www.facebook.com/share/1ErUE1aBmX/?mibextid=wwXIfr" target="_blank" rel="noopener">
+          <span class="pcard-icon"><svg><use href="#i-facebook" /></svg></span>
+          <h3>Facebook</h3>
+          <p class="handle">Pang Lihour</p>
+          <p>Videos, updates and community posts.</p>
+          <span class="pcard-cta">Follow <svg class="ico"><use href="#i-arrow" /></svg></span>
+        </a>
+        <a class="pcard tilt reveal" style="--brand:#29b6f6" href="https://t.me/lihuo_pang" target="_blank" rel="noopener">
+          <span class="pcard-icon"><svg><use href="#i-telegram" /></svg></span>
+          <h3>Telegram</h3>
+          <p class="handle">@lihuo_pang</p>
+          <p>Message me directly or stay in the loop.</p>
+          <span class="pcard-cta">Message <svg class="ico"><use href="#i-arrow" /></svg></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="section" id="content">
+      <div class="section-head reveal">
+        <p class="eyebrow">03 — What I create</p>
+        <h2>Content &amp; <span class="gradient-text">collaborations</span></h2>
+      </div>
+      <div class="services">
+        <article class="scard glass reveal">
+          <span class="scard-icon"><svg><use href="#i-phone" /></svg></span>
+          <h3>Short-form videos</h3>
+          <p>Vertical videos for TikTok, Reels and Shorts — quick, engaging and made to be shared.</p>
+        </article>
+        <article class="scard glass reveal">
+          <span class="scard-icon"><svg><use href="#i-video" /></svg></span>
+          <h3>YouTube videos</h3>
+          <p>Longer stories, vlogs and behind-the-scenes content for my YouTube channel.</p>
+        </article>
+        <article class="scard glass reveal">
+          <span class="scard-icon"><svg><use href="#i-camera" /></svg></span>
+          <h3>Photos &amp; stories</h3>
+          <p>Everyday moments, photo posts and stories on Instagram and Facebook.</p>
+        </article>
+        <article class="scard glass reveal">
+          <span class="scard-icon"><svg><use href="#i-spark" /></svg></span>
+          <h3>Brand partnerships</h3>
+          <p>Sponsored posts, product reviews and creative campaigns that fit my audience.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="contact-card glass reveal">
+        <p class="eyebrow">04 — Contact</p>
+        <h2>Let's create something <span class="gradient-text">together</span></h2>
+        <p class="contact-sub">For business inquiries, sponsorships and collaborations, reach me at:</p>
+        <div class="email-row">
+          <a class="email" href="mailto:panglihuo@gmail.com?subject=Business%20inquiry%20for%20Pang%20Lihour">panglihuo@gmail.com</a>
+          <button class="copy-btn" id="copyBtn" type="button" aria-label="Copy email address">
+            <svg class="ico"><use href="#i-copy" /></svg><span>Copy</span>
+          </button>
+        </div>
+        <div class="contact-actions">
+          <a href="mailto:panglihuo@gmail.com?subject=Business%20inquiry%20for%20Pang%20Lihour" class="btn btn-primary">
+            <svg class="ico"><use href="#i-mail" /></svg> Send an email
+          </a>
+          <a href="https://t.me/lihuo_pang" target="_blank" rel="noopener" class="btn btn-ghost">
+            <svg class="ico"><use href="#i-telegram" /></svg> Message on Telegram
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <ul class="footer-socials" aria-label="Social links">
+      <li><a href="https://www.tiktok.com/@lihour_001" target="_blank" rel="noopener" aria-label="TikTok"><svg><use href="#i-tiktok" /></svg></a></li>
+      <li><a href="https://youtube.com/@panglihour" target="_blank" rel="noopener" aria-label="YouTube"><svg><use href="#i-youtube" /></svg></a></li>
+      <li><a href="https://www.instagram.com/lihour_001" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-instagram" /></svg></a></li>
+      <li><a href="https://www.facebook.com/share/1ErUE1aBmX/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook"><svg><use href="#i-facebook" /></svg></a></li>
+      <li><a href="https://t.me/lihuo_pang" target="_blank" rel="noopener" aria-label="Telegram"><svg><use href="#i-telegram" /></svg></a></li>
+      <li><a href="mailto:panglihuo@gmail.com" aria-label="Email"><svg><use href="#i-mail" /></svg></a></li>
+    </ul>
+    <p>© <span id="year">2026</span> Pang Lihour · Content Creator</p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
